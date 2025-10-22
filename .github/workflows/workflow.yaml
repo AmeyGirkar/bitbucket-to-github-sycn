@@ -1,0 +1,25 @@
+name: Bitbucket → GitHub Continuous Mirror
+
+on:
+  workflow_dispatch:        # manual trigger
+  schedule:
+    - cron: "*/30 * * * *"  # every 30 minutes
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout workflow repo
+        uses: actions/checkout@v4
+
+      - name: Set up Git
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Run Bitbucket → GitHub sync script
+        env:
+          BITBUCKET_TOKEN: ${{ secrets.BITBUCKET_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_PAT }}
+        run: bash scripts/bitbucket_to_github_sync.sh
