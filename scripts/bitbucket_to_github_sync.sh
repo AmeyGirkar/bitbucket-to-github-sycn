@@ -27,6 +27,7 @@ cd "$WORK_DIR"
 
 # ===== CONTINUOUS SYNC LOOP =====
 while [ "$iteration" -le "$MAX_ITERATIONS" ]; do
+    
     if [ ! -d "$WORK_DIR/repo" ]; then
         echo "[INIT] Cloning Bitbucket repository..."
         git clone --mirror "$BITBUCKET_REPO" repo
@@ -75,6 +76,5 @@ while [ "$iteration" -le "$MAX_ITERATIONS" ]; do
 
     echo "[WAIT] Sleeping for $SLEEP_INTERVAL seconds before next check..."
     sleep "$SLEEP_INTERVAL"
-
-    ((iteration++))
+    iteration=$((iteration + 1))
 done
