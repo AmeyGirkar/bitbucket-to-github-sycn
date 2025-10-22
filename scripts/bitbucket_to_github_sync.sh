@@ -3,7 +3,7 @@ set -e
 
 # ===== CONFIGURATION =====
 BITBUCKET_REPO="https://x-token-auth:${BITBUCKET_TOKEN}@bitbucket.org/cisconian/sample-project.git"
-GITHUB_REPO="https://x-access-token:${GITHUB_TOKEN}@github.com/AmeyGirkar/bitbucket-mirroring-.git"
+GITHUB_REPO="https://x-access-token:${GITHUB_TOKEN}@github.com/AmeyGirkar/bitbucket-mirroring-test.git"
 WORK_DIR="/tmp/repo_sync"
 SLEEP_INTERVAL=120  # seconds (2 minutes between syncs)
 
