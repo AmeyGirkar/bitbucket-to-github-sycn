@@ -75,4 +75,6 @@ while [ "$iteration" -le "$MAX_ITERATIONS" ]; do
 
     echo "[WAIT] Sleeping for $SLEEP_INTERVAL seconds before next check..."
     sleep "$SLEEP_INTERVAL"
+
+    ((iteration++))
 done
