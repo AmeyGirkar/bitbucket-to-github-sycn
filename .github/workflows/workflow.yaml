@@ -21,5 +21,5 @@ jobs:
       - name: Run Bitbucket → GitHub sync script
         env:
           BITBUCKET_TOKEN: ${{ secrets.BITBUCKET_TOKEN }}
-          GITHUB_TOKEN: ${{ secrets.GITHUB_PAT }}
+          GITHUB_TOKEN: ${{ secrets.GGITHUB_PAT }}
         run: bash scripts/bitbucket_to_github_sync.sh
