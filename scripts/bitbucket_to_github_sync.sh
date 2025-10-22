@@ -6,15 +6,15 @@ BITBUCKET_REPO="https://x-token-auth:${BITBUCKET_TOKEN}@bitbucket.org/cisconian/
 GITHUB_REPO="https://x-access-token:${GITHUB_TOKEN}@github.com/AmeyGirkar/bitbucket-mirroring-test.git"
 WORK_DIR="/tmp/repo_sync"
 SLEEP_INTERVAL=10  # seconds (2 minutes between syncs)
-
+iteration=0
+MAX_ITERATIONS=5 
 
 # ===== SETUP =====
 #!/usr/bin/env bash
 set -euo pipefail
 
 
-iteration=0
-max_iterations=5 
+
 
 
 WORK_DIR="${WORK_DIR:-/tmp/sync}"
@@ -26,7 +26,7 @@ mkdir -p "$WORK_DIR"
 cd "$WORK_DIR"
 
 # ===== CONTINUOUS SYNC LOOP =====
-while  [ $iteration -lt $max_iterations ]; do
+while [ "$iteration" -le "$MAX_ITERATIONS" ]; do
     if [ ! -d "$WORK_DIR/repo" ]; then
         echo "[INIT] Cloning Bitbucket repository..."
         git clone --mirror "$BITBUCKET_REPO" repo
